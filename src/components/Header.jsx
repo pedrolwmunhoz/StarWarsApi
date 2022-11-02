@@ -1,18 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-const Header = () => {
-  const headerTitle = ["films", "people", "species"]
+import { UseStateContext } from '../context/ContextProvider'
 
-  const linkFocus = "cursor-pointer text-neutral-400"
-  const link = 'cursor-pointer text-slate-800 font-bold'
+const Header = () => {
+
+  const { setSearchValue } = UseStateContext()
+  const headerTitle = ["films", "peoples"]
+
+  const link = "cursor-pointer text-neutral-400 sm:text-2xl md:text-3xl"
+  const linkBold = "cursor-pointer text-slate-800 font-bold sm:text-2xl md:text-3xl"
 
   return (
     <div className="flex flex-wrap gap-5">
         {headerTitle.map((title, index)=>(
           <NavLink
-            className={({ isActive })=> isActive? link : linkFocus}
+            className={({ isActive })=> isActive? linkBold : link }
             key={index}
             to={"/"+title.toLowerCase()}
+            onClick={()=> setSearchValue("")}
           >
             {title.toUpperCase()}
           </NavLink>

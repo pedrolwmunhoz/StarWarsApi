@@ -5,10 +5,11 @@ import AppRoutes from './routes';
 
 
 function App() {
+
   return (
     <BrowserRouter>
       <div className="flex relative">
-        <div className="flex-2 w-full">
+        <div className="flex-2 w-full h-full bg-slate-100">
           <SearchComponent />
           <div className="p-5">
             <Header />

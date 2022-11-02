@@ -1,11 +1,15 @@
 import React from 'react'
 import { BiSearchAlt }from 'react-icons/bi'
+import { UseStateContext } from '../context/ContextProvider'
 
 function SearchComponent() {
+
+  const { searchValue, setSearchValue, setRender } = UseStateContext()
 
   function handleButtonSearch () {
     document.getElementById("button-search").focus()
   }
+
 
   return (
     <div className="static navbar w-full mb-20">
@@ -14,10 +18,17 @@ function SearchComponent() {
             id="button-search"
             type="search"
             placeholder="Search name"
+            value={searchValue}
+            onChange={()=>{
+              setRender(false)
+              setSearchValue(document.getElementById("button-search").value)
+            }}
           />
           <BiSearchAlt className="cursor-pointer"
             size={30}
-            onClick={()=> handleButtonSearch()}/>
+            onClick={()=>{
+              handleButtonSearch()
+            }}/>
         </div>
     </div>
   )

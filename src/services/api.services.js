@@ -1,8 +1,10 @@
 import Axios from 'axios'
 
-export async function getPeoples () {
+export async function getApi ( url ) {
     return await Axios
-        .get( 'https://swapi.dev/api/' )
-        .then( resp => resp.data )
+        .get( `https://swapi.dev/api/${url}` )
+        .then( resp => {
+            return resp.data
+        } )
         .catch( erro => erro)
 }
